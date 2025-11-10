@@ -1,0 +1,69 @@
+# 🚀 AWS Disaster Recovery Automation using Lambda, EventBridge & Step Functions
+
+This project automates **EC2 Disaster Recovery (DR)** using **AWS Lambda**, **EventBridge**, **Step Functions**, and **SNS**.  
+When the **primary EC2 instance stops or fails**, AWS automatically launches a **backup EC2** from a preconfigured AMI, verifies its status, and sends a success/failure alert via SNS.
+
+---
+
+## 🧩 Architecture Overview
+
+![Architecture](./screenshots/architecture.png)
+
+### Workflow:
+1. **Primary EC2** runs production workload.
+2. **EventBridge rule** detects EC2 stop or termination.
+3. **Step Function** orchestrates the recovery sequence.
+4. **Lambda functions** launch a backup EC2 from AMI.
+5. **SNS topic** sends success/failure alerts to admin email.
+6. **CloudWatch Logs** record all automation steps.
+
+---
+
+## ⚙️ AWS Services Used
+
+| Service | Role |
+|----------|------|
+| EC2 | Primary & Backup instances |
+| AMI | Backup image of the primary |
+| EventBridge | Detects EC2 stopped/terminated |
+| Lambda | Executes recovery logic |
+| Step Functions | Orchestrates DR workflow |
+| SNS | Sends notifications |
+| CloudWatch | Logs events and metrics |
+
+---
+
+
+---
+
+## 🧠 Key Features
+
+✅ Auto-detect EC2 stop/terminate events  
+✅ Launch new EC2 from AMI automatically  
+✅ Verify instance health post-launch  
+✅ Send real-time SNS alerts  
+✅ Serverless orchestration via Step Functions  
+✅ Deployable fully via AWS CLI  
+
+---
+
+## 🪜 Step-by-Step Setup
+
+### 1️⃣ Create IAM Role for Lambda
+Attach this policy:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    { "Effect": "Allow", "Action": [
+        "ec2:RunInstances",
+        "ec2:DescribeInstances",
+        "ec2:CreateTags",
+        "ec2:DescribeInstanceStatus"
+      ], "Resource": "*" },
+    { "Effect": "Allow", "Action": ["sns:Publish"], "Resource": "*" },
+    { "Effect": "Allow", "Action": ["logs:*"], "Resource": "*" }
+  ]
+}
+
+
