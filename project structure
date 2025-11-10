@@ -1,0 +1,26 @@
+aws-dr-automation/
+│
+├── README.md
+│
+├── lambda/
+│   ├── start-backup-instance.py
+│   ├── check-primary-ec2.py
+│   ├── verify-backup-health.py
+│   ├── send-success-sns.py
+│   └── send-failure-sns.py
+│
+├── step-functions/
+│   └── dr-step-function.json
+│
+├── cli-setup/
+│   └── eventbridge-setup.sh
+│
+├── screenshots/
+│   ├── architecture.png
+│   ├── eventbridge-trigger.png
+│   ├── lambda-output.png
+│   ├── ec2-backup-running.png
+│   └── sns-alert-email.png
+│
+└── docs/
+    └── project-report.md
