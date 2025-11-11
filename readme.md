@@ -16,6 +16,8 @@ v
 v
 [Amazon S3 Bucket (Static Files)]
 
+<img width="1024" height="1024" alt="architecture" src="https://github.com/user-attachments/assets/a2941a86-2393-4711-91c5-72a20d22dc71" />
+
 ----
 
 - **S3** stores static assets (HTML, CSS, JS, Images)
