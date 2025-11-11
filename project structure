@@ -1,26 +1,17 @@
-aws-dr-automation/
+aws-static-website/
 │
-├── README.md
+├── website/
+│   ├── index.html
+│   ├── about.html
+│   ├── style.css
+│   └── assets/
+│       ├── logo.png
+│       └── background.jpg
 │
-├── lambda/
-│   ├── start-backup-instance.py
-│   ├── check-primary-ec2.py
-│   ├── verify-backup-health.py
-│   ├── send-success-sns.py
-│   └── send-failure-sns.py
+├── nginx/
+│   └── default.conf
 │
-├── step-functions/
-│   └── dr-step-function.json
+├── scripts/
+│   └── deploy_to_s3.sh
 │
-├── cli-setup/
-│   └── eventbridge-setup.sh
-│
-├── screenshots/
-│   ├── architecture.png
-│   ├── eventbridge-trigger.png
-│   ├── lambda-output.png
-│   ├── ec2-backup-running.png
-│   └── sns-alert-email.png
-│
-└── docs/
-    └── project-report.md
+└── README.md
